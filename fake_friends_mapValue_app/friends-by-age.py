@@ -11,7 +11,9 @@ def parseLine(line):
     return (age, numFriends)
 
 
-lines = sc.textFile("file:///SparkCourse/fakefriends.csv")
+lines = sc.textFile(
+    "file:///SparkCourse/apps/fake_friends_mapValue_app/fakefriends.csv"
+)
 rdd = lines.map(parseLine)
 totalsByAge = rdd.mapValues(lambda x: (x, 1)).reduceByKey(
     lambda x, y: (x[0] + y[0], x[1] + y[1])
@@ -33,7 +35,9 @@ for result in results:
 
 # # Read the CSV file into a DataFrame
 # df = spark.read.csv(
-#     "file:///SparkCourse/fakefriends.csv", header=True, inferSchema=True
+#     "file:///SparkCourse/apps/fake_friends_mapValue_app/fakefriends.csv",
+#     header=True,
+#     inferSchema=True,
 # )
 
 # # Group by age and calculate the average number of friends
