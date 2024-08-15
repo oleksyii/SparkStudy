@@ -10,9 +10,9 @@ pattern = re.compile(r"\w+(?:'\w+)?", re.UNICODE)
 
 def split_text(text):
     matches = pattern.findall(text.lower())
-    # Filter out None values and keep only non-word characters
-    non_word_matches = [match for match in matches if match]
-    return non_word_matches
+    # Filter out None values and keep only words
+    word_matches = [match for match in matches if match]
+    return word_matches
 
 
 words = input.flatMap(split_text)
