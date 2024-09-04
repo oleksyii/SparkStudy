@@ -8,6 +8,16 @@ from math import sqrt
 # spark-submit --executor-memory 1g MovieSimilarities1M.py 260
 
 
+# Item-based collaborative filtering
+
+# first, the movies are split into pairs by each user with the corresponding rating
+# if the ratings are both good, it means, that there is a relation between those two movies
+# then, if a user likes one of those movies, we can automatically assume, that he could like the movies, that were
+# in pair liked by other users
+
+# Cosine similarity is used
+
+
 def loadMovieNames():
     movieNames = {}
     with open("movies.dat", encoding="ascii", errors="ignore") as f:
